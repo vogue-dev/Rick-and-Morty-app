@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import { fetchingData } from '../redux/actions/fetching';
-import CharacterInfo from '../components/DetailedInfo/DetailedInfo.jsx';
+import DetailedInfo from '../components/DetailedInfo/DetailedInfo.jsx';
 import Loader from '../components/Loader/Loader';
 
 const CharacterInfoPage = () => {
@@ -12,13 +12,11 @@ const CharacterInfoPage = () => {
 	const { charId } = useParams();
 	const { isLoaded, data } = state;
 
-	const charData = data.find((e) => e.id === Number(charId));
-
 	useEffect(() => {
 		dispatch(fetchingData(Math.ceil(charId / 20)));
-	}, [dispatch]);
+	}, [dispatch, charId]);
 
-	return isLoaded ? <CharacterInfo data={charData} /> : <Loader />;
+	return isLoaded ? <DetailedInfo data={data} charId={charId} /> : <Loader />;
 };
 
 export default CharacterInfoPage;

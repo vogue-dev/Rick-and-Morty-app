@@ -3,41 +3,41 @@ import { Pagination } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 
 import { fetchingData } from '../../redux/actions/fetching';
+import { setCurrentPage, setPagination } from '../../redux/actions/pagination';
 import { paginationGenerator } from '../../utils/functions';
+
 import './pagination.scss';
 
 const PaginationBlock = ({ state }) => {
 	const dispatch = useDispatch();
-	const info = state.info;
-	let [currentPage, setCurrentPage] = useState(1);
-	let [items, setItems] = useState([1, 2, 3, 4, 5]);
+	const { currentPage, info, pagination } = state;
 	let [charactersPerPage] = useState(20);
 
 	let totalPages = Math.ceil(info.count / charactersPerPage);
 
+	// страшная самописная пагинация :)
 	const onClickPaginate = (num) => {
 		let array = [];
 
 		if (num === 'start') {
 			array = paginationGenerator(3);
-			setItems(array);
-			setCurrentPage(1);
-			num = 1;
+			dispatch(setPagination(array));
+			dispatch(setCurrentPage(1));
 		}
 
 		if (num === 'end') {
 			array = paginationGenerator(totalPages - 2);
-			setItems(array);
-			setCurrentPage(totalPages);
+			dispatch(setPagination(array));
 			num = totalPages;
+			dispatch(setCurrentPage(totalPages));
 		}
 
 		if (num > 0 && num <= totalPages) {
-			setCurrentPage(num);
+			dispatch(setCurrentPage(num));
 
 			if (num >= 3 && num <= totalPages - 2) {
 				array = paginationGenerator(num);
-				setItems(array);
+				dispatch(setPagination(array));
 			}
 		}
 
@@ -60,7 +60,7 @@ const PaginationBlock = ({ state }) => {
 					Prev
 				</Pagination.Prev>
 
-				{items.map((item) => (
+				{pagination.map((item) => (
 					<Pagination.Item
 						key={item}
 						active={item === currentPage}

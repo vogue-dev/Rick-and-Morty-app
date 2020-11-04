@@ -8,3 +8,22 @@ export const paginationGenerator = (num) => {
 	}
 	return array;
 };
+
+export const badgeColor = (gender) => {
+	switch (gender) {
+		case 'Male':
+			return 'primary';
+
+		case 'Female':
+			return 'danger';
+
+		case 'unknown':
+			return 'secondary';
+
+		case 'Genderless':
+			return 'warning';
+
+		default:
+			return 'success';
+	}
+};

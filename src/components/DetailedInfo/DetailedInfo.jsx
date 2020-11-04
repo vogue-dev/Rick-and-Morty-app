@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Loader from '../Loader/Loader';
+
 const PersonInfo = styled.div`
 	 {
 		.char-info {
@@ -28,25 +30,27 @@ const Title = styled.h2`
 	}
 `;
 
-const DetailedInfo = ({ data }) => {
-	return data ? (
+const DetailedInfo = ({ data, charId }) => {
+	const char = data.find((e) => e.id === Number(charId));
+
+	return char ? (
 		<PersonInfo>
 			<Title>Детали персонажа</Title>
 			<div className="char-info col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
 				<div className="image">
-					<img src={data.image} alt={data.name} />
+					<img src={char.image} alt={char.name} />
 				</div>
-				<h3 className="name">Name: {data.name}</h3>
-				<div className="gender">Gender: {data.gender}</div>
-				<div className="id">id: {data.id}</div>
-				<div className="type">Type: {data.type ? data.type : '-'}</div>
-				<div className="status">Status: {data.status}</div>
-				<div className="species">Species: {data.species}</div>
-				<div className="location">Location: {data.location.name}</div>
+				<h3 className="name">Name: {char.name}</h3>
+				<div className="gender">Gender: {char.gender}</div>
+				<div className="id">id: {char.id}</div>
+				<div className="type">Type: {char.type ? char.type : '-'}</div>
+				<div className="status">Status: {char.status}</div>
+				<div className="species">Species: {char.species}</div>
+				<div className="location">Location: {char.location.name}</div>
 			</div>
 		</PersonInfo>
 	) : (
-		<div>Loading...</div>
+		<Loader />
 	);
 };
 

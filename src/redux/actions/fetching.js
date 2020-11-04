@@ -7,7 +7,7 @@ export const fetchingData = (num) => async (dispatch) => {
 				.then((response) => dispatch(setData(response.data)))
 		: axios
 				.get('https://rickandmortyapi.com/api/character/')
-				.then((response) => dispatch(setData(response.data)));
+				.then((response) => dispatch(setData({ data: response.data })));
 };
 
 export const setData = (data) => ({

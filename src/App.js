@@ -1,6 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
 
 import Header from './components/Header/Header';
+
 import routes from './utils/routes';
 
 function App() {

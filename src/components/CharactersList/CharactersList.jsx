@@ -2,9 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Badge } from 'react-bootstrap';
 
-import './characters.scss';
+import { badgeColor } from '../../utils/functions';
+import './characters-list.scss';
 
-const CharactersOut = ({ data }) => {
+const Characters = ({ data }) => {
 	return (
 		<div className="row">
 			{data.map((e) => (
@@ -14,17 +15,7 @@ const CharactersOut = ({ data }) => {
 							<img src={e.image} alt={e.id} />
 							<h5 className="title">{e.name}</h5>
 							<div className="gender">{e.gender}</div>
-							<Badge
-								pill
-								variant={
-									e.gender === 'Male'
-										? 'primary'
-										: 'Female'
-										? 'danger'
-										: 'unknown'
-										? 'secondary'
-										: 'light'
-								}>
+							<Badge pill variant={badgeColor(e.gender)}>
 								{e.gender}
 							</Badge>
 						</div>
@@ -35,14 +26,14 @@ const CharactersOut = ({ data }) => {
 	);
 };
 
-const Characters = ({ state, searchValue }) => {
-	let { data } = state;
+const CharactersList = ({ state, searchValue }) => {
+	const { data } = state;
 
 	let filteredData = data.filter(({ name }) =>
 		name.toLowerCase().includes(searchValue.toLowerCase())
 	);
 
-	return <CharactersOut data={filteredData} />;
+	return <Characters data={filteredData} />;
 };
 
-export default Characters;
+export default CharactersList;

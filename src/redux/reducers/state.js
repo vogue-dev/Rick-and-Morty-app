@@ -2,6 +2,8 @@ const initialState = {
 	data: [],
 	info: {},
 	isLoaded: false,
+	currentPage: 1,
+	pagination: [1, 2, 3, 4, 5],
 };
 
 const items = (state = initialState, action) => {
@@ -18,6 +20,18 @@ const items = (state = initialState, action) => {
 			return {
 				...state,
 				isLoaded: action.payload,
+			};
+
+		case 'SET_CURRENT_PAGE':
+			return {
+				...state,
+				currentPage: action.payload,
+			};
+
+		case 'SET_PAGINATION':
+			return {
+				...state,
+				pagination: action.payload,
 			};
 
 		default:

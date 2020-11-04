@@ -1,6 +1,7 @@
 import MainPage from '../pages/Main';
 import SecondTask from '../pages/SecondTask';
 import CharInfo from '../pages/CharInfo';
+import Error404 from '../pages/Error404';
 
 const routes = [
 	{
@@ -18,8 +19,14 @@ const routes = [
 	{
 		name: 'CharInfo',
 		component: CharInfo,
-		exact: false,
+		exact: true,
 		path: '/character/:charId',
+	},
+	{
+		name: '404Page',
+		component: Error404,
+		exact: false,
+		path: '/*',
 	},
 ];
 
