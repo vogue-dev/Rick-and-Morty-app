@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-export const gettingData = () => async (dispatch) => {
-	await axios.get('').then(({ data }) => {
-		dispatch(setData(data));
-	});
+export const fetchingData = () => async (dispatch) => {
+	axios
+		.get('https://rickandmortyapi.com/api/character/')
+		.then((response) => dispatch(setData(response.data)));
 };
 
 export const setData = (data) => ({

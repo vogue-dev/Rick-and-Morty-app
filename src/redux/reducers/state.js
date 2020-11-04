@@ -1,15 +1,16 @@
 const initialState = {
 	data: [],
+	info: {},
 	isLoaded: false,
 };
 
 const items = (state = initialState, action) => {
-	// console.log('action.payload', action.payload);
 	switch (action.type) {
 		case 'SET_DATA':
 			return {
 				...state,
-				data: action.payload,
+				data: action.payload.results,
+				info: action.payload.info,
 				isLoaded: true,
 			};
 		case 'SET_DATA_FETCHING':

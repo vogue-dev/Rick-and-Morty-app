@@ -1,0 +1,48 @@
+.item {
+	padding: 20px;
+
+	& a {
+		color: black;
+		text-decoration: none;
+
+		&:hover {
+			color: black;
+			text-decoration: none;
+		}
+	}
+
+	& .content-wrapper {
+		height: 100%;
+		padding: 20px;
+		box-shadow: 0 0px 10px rgba(0, 0, 0, 0.15);
+		border-radius: 3px;
+		transition-duration: 0.3s;
+
+		&:hover {
+			cursor: pointer;
+			box-shadow: 0 0px 10px rgba(0, 0, 0, 0.35);
+		}
+
+		& img {
+			margin: 0 auto;
+		}
+	}
+}
+
+@media all and (min-width: 100px) {
+	.item {
+		width: 100%;
+	}
+}
+
+@media all and (min-width: 768px) {
+	.item {
+		width: 50%;
+	}
+}
+
+@media all and (min-width: 1200px) {
+	.item {
+		width: 25%;
+	}
+}

@@ -6,12 +6,12 @@ const Header = () => {
 		<header>
 			<Navbar bg="dark" variant="dark" expand="lg">
 				<div className="container">
-					<Navbar.Brand href="#home">Rick and Morty's</Navbar.Brand>
+					<Navbar.Brand href="/">Wiki Rick and Morty's</Navbar.Brand>
 					<Navbar.Toggle aria-controls="basic-navbar-nav" />
 					<Navbar.Collapse id="basic-navbar-nav">
 						<Nav className="mr-auto">
-							<Nav.Link href="#home">Home</Nav.Link>
-							<Nav.Link href="#home">Second Test-task</Nav.Link>
+							<Nav.Link href="/">Home</Nav.Link>
+							<Nav.Link href="/task2">Second Test-task</Nav.Link>
 						</Nav>
 					</Navbar.Collapse>
 				</div>
