@@ -1,8 +1,10 @@
 import axios from 'axios';
 
-export const fetchingData = (url) => async (dispatch) => {
-	url
-		? axios.get(url).then((response) => dispatch(setData(response.data)))
+export const fetchingData = (num) => async (dispatch) => {
+	num
+		? axios
+				.get(`https://rickandmortyapi.com/api/character/?page=${num}`)
+				.then((response) => dispatch(setData(response.data)))
 		: axios
 				.get('https://rickandmortyapi.com/api/character/')
 				.then((response) => dispatch(setData(response.data)));

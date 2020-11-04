@@ -1,13 +1,28 @@
 import React from 'react';
+import styled from 'styled-components';
 
-import './filters.scss';
+const FilterWrapper = styled.div`
+	 {
+		margin-bottom: 50px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		& input {
+			margin-left: 10px;
+		}
+	}
+`;
 
 const Fitlers = ({ filterByName }) => {
 	return (
-		<div className="filters">
-			Search by Name
-			<input placeholder="Search..." onChange={filterByName} />
-		</div>
+		<>
+			<h2 className="text-center">Список всех персонажей</h2>
+			<FilterWrapper>
+				Search by Name
+				<input placeholder="Search..." onChange={filterByName} />
+			</FilterWrapper>
+		</>
 	);
 };
 

@@ -13,6 +13,7 @@ const items = (state = initialState, action) => {
 				info: action.payload.info,
 				isLoaded: true,
 			};
+
 		case 'SET_DATA_FETCHING':
 			return {
 				...state,
