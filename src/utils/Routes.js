@@ -1,7 +1,8 @@
-import MainPage from '../view/pages/MainPage';
-import ItemsPage from '../view/pages/ItemsPage';
+import MainPage from '../pages/Main';
+import SecondTask from '../pages/SecondTask';
+import CharInfo from '../pages/CharInfo';
 
-const Routes = [
+const routes = [
 	{
 		name: 'MainPage',
 		component: MainPage,
@@ -9,11 +10,17 @@ const Routes = [
 		path: '/',
 	},
 	{
-		name: 'PersonPage',
-		component: ItemsPage,
+		name: 'SecondTask',
+		component: SecondTask,
 		exact: true,
-		path: '/items',
+		path: '/second-task',
+	},
+	{
+		name: 'CharInfo',
+		component: CharInfo,
+		exact: false,
+		path: '/character/:charId',
 	},
 ];
 
-export default Routes;
+export default routes;

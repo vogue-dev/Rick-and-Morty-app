@@ -11,7 +11,7 @@ const CharactersOut = ({ data }) => {
 					<Link to={`/character/${e.id}`}>
 						<div className="content-wrapper">
 							<img src={e.image} alt={e.id} />
-							<h4 className="title">{e.name}</h4>
+							<h5 className="title">{e.name}</h5>
 							<div className="gender">{e.gender}</div>
 						</div>
 					</Link>

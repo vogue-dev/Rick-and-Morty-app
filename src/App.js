@@ -1,16 +1,14 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 
 import Header from './components/Header/Header';
-import MainPage from './pages/MainPage';
-import PersonInfo from './pages/PersonInfo';
 
+import routes from './utils/routes';
 import { fetchingData } from './redux/actions/fetching';
 
 function App() {
 	const dispatch = useDispatch();
-	let state = useSelector(({ state }) => state);
 
 	useEffect(() => {
 		dispatch(fetchingData());
@@ -22,8 +20,10 @@ function App() {
 			<main>
 				<div className="container">
 					<Switch>
-						<Route path="/" exact render={() => <MainPage state={state} />} />
-						<Route path="/character/:charId" exact render={() => <PersonInfo state={state} />} />
+						{routes.map((eachRoute) => {
+							const { exact, component, path } = eachRoute;
+							return <Route path={path} exact={exact} component={component} key={path} />;
+						})}
 					</Switch>
 				</div>
 			</main>
